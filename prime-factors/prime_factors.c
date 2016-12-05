@@ -9,10 +9,16 @@
 
 int get_prime_factors(int data, int * factors)
 {
-    if (data < 2)
-    {
-        return 0;
+    int n;
+    int candidate = 2;
+
+    for (n=0; candidate <= data; candidate++){
+        for (; data % candidate == 0; data /= candidate){
+            factors[n++] = candidate;
+        }
     }
+
+    return n;
 }
 
 

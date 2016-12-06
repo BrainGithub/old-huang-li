@@ -7,19 +7,21 @@
 #include <stdlib.h>
 #include <math.h>
 
-typedef void (*test_fn_type)(int *);
+//typedef void (*test_fn_type)(int *);
 
 static void prime_factor_test(int data, int * factors, int * result, int count)
 {
     int i;
     int n = get_prime_factors(data, factors);
+        
+    printf("data=%d, there are n=%d prime factors:\n", data, n);
+    for (i=0; i<n; i++)
+         printf(" %d", factors[i]);
+    printf("\n");
+
     if (n != count || memcmp(factors, result, n) != 0)
     {
         printf("verify failed: %s\n", __func__);
-        printf("data=%d,n=%d\n", data, n);
-        for (i=0; i<n; i++)
-            printf(" %d", factors[i]);
-        printf("\n");
         exit(0);
     }
 }
@@ -29,60 +31,57 @@ int main()
     int factors[1000] = {0};
     int res_factors[1000] = {0};
     int i=0;
-    int data=0;
+    int data=-1;
 
     i=0;
     prime_factor_test(-1, factors, res_factors, i);
+    prime_factor_test(0, factors, res_factors, i);
    
-/*    i = 0;
+    i = 0;
     res_factors[i++] = 2;
-    prime_factor_test_2_is_2(factors, res_factors, i);
+    prime_factor_test(2, factors, res_factors, i);
 
     i = 0;
     res_factors[i++] = 3;
-    prime_factor_test_3_is_3(factors, res_factors, i);
-
+    prime_factor_test(3, factors, res_factors, i);
 
     i = 0;
     res_factors[i++] = 2;
     res_factors[i++] = 2;
-    prime_factor_test_4_is_2_2(factors, res_factors, i);
+    prime_factor_test(4, factors, res_factors, i);
 	
     data = 5;    
     
     i = 0;
     res_factors[i++] = 5;
-    prime_factor_test(data++, factors, res_factors, i);
+    prime_factor_test(5, factors, res_factors, i);
    
    
     i = 0;
     res_factors[i++] = 2;
     res_factors[i++] = 3;
-    prime_factor_test(data++, factors, res_factors, i);
+    prime_factor_test(6, factors, res_factors, i);
    
     i = 0;
     res_factors[i++] = 7;
-    prime_factor_test(data++, factors, res_factors, i);
+    prime_factor_test(7, factors, res_factors, i);
    
     i = 0;
     res_factors[i++] = 2;
     res_factors[i++] = 2;
     res_factors[i++] = 2;
-    prime_factor_test(data++, factors, res_factors, i);
+    prime_factor_test(8, factors, res_factors, i);
    
+    i = 0;
+    res_factors[i++] = 3;
+    res_factors[i++] = 3;
+    prime_factor_test(9, factors, res_factors, i);
+   
+    i = 0;
+    res_factors[i++] = 2;
+    res_factors[i++] = 5;
+    prime_factor_test(15280, factors, res_factors, i);
     
-    i = 0;
-    res_factors[i++] = 3;
-    res_factors[i++] = 3;
-    prime_factor_test(data++, factors, res_factors, i);
-   
-    i = 0;
-    res_factors[i++] = 3;
-    res_factors[i++] = 7;
-    prime_factor_test(21, factors, res_factors, i);
-*/   
-    
-    printf("passed successfully!\n");    
+    printf("---- passed successfully!\n");    
     return 0;
-
 }

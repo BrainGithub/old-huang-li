@@ -79,8 +79,15 @@ int main()
    
     i = 0;
     res_factors[i++] = 2;
+    res_factors[i++] = 3;
     res_factors[i++] = 5;
-    prime_factor_test(15280, factors, res_factors, i);
+    res_factors[i++] = 7;
+    prime_factor_test(210, factors, res_factors, i);
+    
+    i = 0;
+    res_factors[i++] = 2;
+    res_factors[i++] = 3;
+    prime_factor_test(29280, factors, res_factors, i);
     
     printf("---- passed successfully!\n");    
     return 0;

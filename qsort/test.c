@@ -14,24 +14,32 @@ int main(int argc, char *argv[])
 	int j;
 	int arr[MAX];
 	int arr2[MAX];
-		            
+	int arr3[MAX];
+	int temp=0;            
 	if (argc < 2) {
 		fprintf(stderr, "Usage: %s <string>...\n", argv[0]);
 		//exit(EXIT_FAILURE);
 	}
 
-	for (j=0; j<MAX; j++)
-		arr[j] = arr2[j] = randon(99999999);
+	srand(time(NULL));
+	for (j=0; j<MAX; j++){
+		arr[j] = arr2[j] = arr3[j] = rand()%10000;
+	}
+	printf("\n-------------------------------%d\n",__LINE__);
+	for (j = 0; j < MAX; j++)
+		printf(" %d", arr3[j]);
 
-
+	printf("\n-------------------------------%d\n",__LINE__);
 	qsort_r(arr, MAX, sizeof(int), cmp, NULL);
 	my_qsort(arr2, 0, MAX-1); 
-
-	for (j = 0; j < 4; j++)
+	for (j = 0; j < MAX; j++)
 		printf(" %d", arr[j]);
+	printf("\n-------------------------------%d\n",__LINE__);
+	for (j = 0; j < MAX; j++)
+		printf(" %d", arr2[j]);
 	printf("\n");
 
-	if (memcmp(arr, arr2, sizeof(int) *4))
+	if (memcmp(arr, arr2, sizeof(int) *MAX))
 		printf("---failed\n");
 
 	return 0;	

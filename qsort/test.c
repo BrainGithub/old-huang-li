@@ -10,18 +10,22 @@ static int cmp(const void *p1, const void *p2, void * priv)
 
 int main(int argc, char *argv[])
 {
+	#define MAX 100
 	int j;
-	int arr[] = {1, -1, 5, 3};
-	int arr2[] = {1, -1, 5, 3};
+	int arr[MAX];
+	int arr2[MAX];
 		            
 	if (argc < 2) {
 		fprintf(stderr, "Usage: %s <string>...\n", argv[0]);
 		//exit(EXIT_FAILURE);
 	}
 
+	for (j=0; j<MAX; j++)
+		arr[j] = arr2[j] = randon(99999999);
 
-	qsort_r(arr, 4, sizeof(int), cmp, NULL);
-	my_qsort(arr2, 0, 3); 
+
+	qsort_r(arr, MAX, sizeof(int), cmp, NULL);
+	my_qsort(arr2, 0, MAX-1); 
 
 	for (j = 0; j < 4; j++)
 		printf(" %d", arr[j]);

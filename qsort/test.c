@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
 	srand(time(NULL));
 	for (j=0; j<MAX; j++){
-		arr[j] = arr2[j] = arr3[j] = rand()%10000;
+		arr[j] = arr2[j] = arr3[j] = 100;//rand()%10000;
 	}
 	printf("\n-------------------------------%d\n",__LINE__);
 	for (j = 0; j < MAX; j++)

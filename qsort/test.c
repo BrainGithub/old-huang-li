@@ -21,27 +21,28 @@ int main(int argc, char *argv[])
 		//exit(EXIT_FAILURE);
 	}
 
-	srand(time(NULL));
 	for (j=0; j<MAX; j++){
-		arr[j] = arr2[j] = arr3[j] = 100;//rand()%10000;
+		arr[j] = arr2[j] = arr3[j] = 99;//rand()%10000;
 	}
-	printf("\n-------------------------------%d\n",__LINE__);
-	for (j = 0; j < MAX; j++)
-		printf(" %d", arr3[j]);
 
-	printf("\n-------------------------------%d\n",__LINE__);
 	qsort_r(arr, MAX, sizeof(int), cmp, NULL);
 	my_qsort(arr2, 0, MAX-1); 
-	for (j = 0; j < MAX; j++)
-		printf(" %d", arr[j]);
-	printf("\n-------------------------------%d\n",__LINE__);
-	for (j = 0; j < MAX; j++)
-		printf(" %d", arr2[j]);
-	printf("\n");
-
+	
 	if (memcmp(arr, arr2, sizeof(int) *MAX))
-		printf("---failed\n");
+		printf("---failed:%d\n", __LINE__);
 
+    //--------------
+	srand(time(NULL));
+	for (j=0; j<MAX; j++){
+		arr[j] = arr2[j] = arr3[j] = rand()%10000;
+	}
+	qsort_r(arr, MAX, sizeof(int), cmp, NULL);
+	my_qsort(arr2, 0, MAX-1); 
+	if (memcmp(arr, arr2, sizeof(int) *MAX))
+		printf("---failed:%d\n", __LINE__);
+
+
+	printf("-- my qsort verified successed!\n");
 	return 0;	
 }
 

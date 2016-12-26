@@ -10,7 +10,7 @@ static int cmp(const void *p1, const void *p2, void * priv)
 
 int main(int argc, char *argv[])
 {
-	#define MAX 100
+	#define MAX 10000
 	int j;
 	int arr[MAX];
 	int arr2[MAX];

@@ -1,2 +1,0 @@
-# codingdojo
-For TDD trainnings.
